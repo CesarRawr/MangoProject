@@ -2,13 +2,20 @@
   <head>
     <link rel="manifest" href="/pwa.webmanifest">
     <link rel="apple-touch-icon" href="/images/Mango.png">
+    <link rel="stylesheet"href="/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#764ABC"/>
   </head>
   <body>
-    <span>This in an examples for here article of progressive web apps that can be found in LogRocket</span>
-    <br>
-    <span>You are now</span> <span><b class="page-status">online</b></span>
+    <div class="container">
+      <div class="hum-container">
+        <span class="hum">0</span>
+      </div>
+      <div class="btn">
+        <span>Print Report</span>
+      </div>
+    </div>
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script>
     <script src="/pwa.js"></script>
     <script src="/status.js"></script>
