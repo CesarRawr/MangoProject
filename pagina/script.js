@@ -1,3 +1,5 @@
+Push.Permission.get();
+
 var clientName = `Cliente#${ Math.floor(Math.random() * 99999999) + 1 }`;
 
 // Create a cliente instance
@@ -32,11 +34,7 @@ function onMessageArrived(message) {
         var json = JSON.parse(message.payloadString);
         console.log("Humedad: " + json.humedad);
         if(json.humedad >= 90) {
-            Notification.requestPermission().then(function(result) {
-                if(result === 'granted') {
-                    sendNotification();
-                }
-            });
+          sendNotification();
         }
     }
     catch(error) {
@@ -46,13 +44,14 @@ function onMessageArrived(message) {
 }
 
 function sendNotification() {
-    var randomItem = Math.floor(Math.random()* 9999);
-    var notifTitle = 'Mangos listos';
-    var notifBody = '¡Parece ser que tus mangos ya están maduros! Corre a probarlos :)';
-    var notifImg = '/images/Mango.png';
-    var options = {
-        body: notifBody,
-        icon: notifImg
-    }
-    var notif = new Notification(notifTitle, options);
+    Push.create('Hi there!', {
+      body: 'This is a notification.',
+      icon: '/images/Mango.png',
+      timeout: 8000,               // Timeout before notification closes automatically.
+      vibrate: [100, 100, 100],    // An array of vibration pulses for mobile devices.
+      onClick: function() {
+          // Callback for when the notification is clicked. 
+          console.log(this);
+      }  
+  });
 }
