@@ -1,7 +1,6 @@
 Push.Permission.get();
 
 window.jsPDF = window.jspdf.jsPDF;
-jsPDF.setFontSize(24);
 
 var humedad = document.querySelector('.hum-container > span.hum');
 var clientName = `Cliente#${ Math.floor(Math.random() * 99999999) + 1 }`;
@@ -67,6 +66,8 @@ boton.addEventListener('click', () => {
   fetch('/obtenerHumedad')
   .then((res) => res.json())
   .then((json) => {
+    console.log(jsPDF);
+    console.log(window.jsPDF);
     for (doc in json) {
      jsPDF.text(20, 20, `${json.nombre} humedad: ${json.humedad} el ${json.fecha}`);
     }
