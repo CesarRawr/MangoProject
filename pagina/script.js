@@ -68,9 +68,10 @@ boton.addEventListener('click', () => {
   .then((res) => res.json())
   .then((json) => {
     for (var i = 0; i < json.length; i++) {
+      
       var y = (i + 1) * 10;
       
-      if (y>=pageHeight) {
+      if (y >= doc.internal.pageSize.getHeight()) {
         doc.addPage();
       }
 
