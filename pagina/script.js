@@ -71,7 +71,7 @@ boton.addEventListener('click', () => {
       var y = (i + 1) * 10;
       
       if (y>=pageHeight) {
-        pdf.addPage();
+        doc.addPage();
       }
 
       doc.text(20, y, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
