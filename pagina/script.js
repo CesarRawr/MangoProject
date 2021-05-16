@@ -1,7 +1,7 @@
 Push.Permission.get();
 
 window.jsPDF = window.jspdf.jsPDF;
-window.jsPDF.setFontSize(24);
+jsPDF.setFontSize(24);
 
 var humedad = document.querySelector('.hum-container > span.hum');
 var clientName = `Cliente#${ Math.floor(Math.random() * 99999999) + 1 }`;
@@ -68,9 +68,9 @@ boton.addEventListener('click', () => {
   .then((res) => res.json())
   .then((json) => {
     for (doc in json) {
-      window.jsPDF.text(20, 20, `${json.nombre} humedad: ${json.humedad} el ${json.fecha}`);
+     jsPDF.text(20, 20, `${json.nombre} humedad: ${json.humedad} el ${json.fecha}`);
     }
-    window.jsPDF.save('reporte.pdf');
+    jsPDF.save('reporte.pdf');
   })
   .catch((e) => {console.log(e)});
 });
