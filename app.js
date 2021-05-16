@@ -42,7 +42,7 @@ var MongoClient = require('mongodb').MongoClient;
 	});
 
 	client.on("error", (error) => {console.log(error);});
-	client.on("connect", () => { console.log("Connected");});
+	client.on("connect", () => { });
 	client.subscribe("MangoProject", { qos:1 });
 
 	app.listen(PORT, function () {
