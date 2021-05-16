@@ -46,6 +46,6 @@ var MongoClient = require('mongodb').MongoClient;
 	client.subscribe("MangoProject", { qos:1 });
 
 	app.listen(PORT, function () {
-	  console.log(`Listening on port ${httpPort}!`)
+	  console.log(`Listening on port ${PORT}!`)
 	})
 })();
