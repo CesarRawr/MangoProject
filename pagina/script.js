@@ -68,8 +68,13 @@ boton.addEventListener('click', () => {
   .then((res) => res.json())
   .then((json) => {
     for (var i = 0; i < json.length; i++) {
-     console.log(json[i]);
-     doc.text(20, (i + 1) * 10, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
+      var y = (i + 1) * 10;
+      
+      if (y>=pageHeight) {
+        pdf.addPage();
+      }
+
+      doc.text(20, y, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
     }
     doc.save('reporte.pdf');
   })
