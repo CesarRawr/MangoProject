@@ -67,10 +67,9 @@ boton.addEventListener('click', () => {
   fetch('/obtenerHumedad')
   .then((res) => res.json())
   .then((json) => {
-    console.log(json);
-    for (obj in json) {
-     console.log(obj);
-     //doc.text(20, 20, `${obj.nombre} humedad: ${obj.humedad} el ${obj.fecha}`);
+    for (var i = 0; i < json.length; i++) {
+     console.log(json[i]);
+     doc.text(20, 20, `${obj.nombre} humedad: ${obj.humedad} el ${obj.fecha}`);
     }
     doc.save('reporte.pdf');
   })
