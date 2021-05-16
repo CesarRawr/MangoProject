@@ -67,8 +67,6 @@ boton.addEventListener('click', () => {
   fetch('/obtenerHumedad')
   .then((res) => res.json())
   .then((json) => {
-    console.log(jsPDF);
-    console.log(window.jsPDF);
     for (obj in json) {
      doc.text(20, 20, `${obj.nombre} humedad: ${obj.humedad} el ${obj.fecha}`);
     }
