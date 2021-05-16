@@ -71,7 +71,7 @@ boton.addEventListener('click', () => {
       
       var y = (i + 1) * 10;
       
-      if (y >= doc.internal.pageSize.getHeight()) {
+      if (y >= doc.internal.pageSize.height()) {
         doc.addPage();
       }
 
