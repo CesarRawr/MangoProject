@@ -8,23 +8,12 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 
 (async function() {
-	var httpPort = 80;
-	var httpsPort = 443;
-	var key = fs.readFileSync('./pagina/privateKey.key');
-	var cert = fs.readFileSync('./pagina/certificate.crt');
+	var PORT = process.env.PORT || 8080;
 
 	var app = express();
-	var server = https.createServer({key: key, cert: cert }, app);
 	app.use(bodyParser.json());
 	app.use(express.static("pagina"));
 	app.use(bodyParser.urlencoded({ extended: true }));
-
-	app.use((req, res, next) => {
-		if (!req.secure) {
-		    return res.redirect('https://' + req.headers.host + req.url);
-		}
-		next();
-	})
 
 	// Conexion mongo
 	var uri = "mongodb+srv://Roberto:Robert060500@$@cluster0.vradk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -56,11 +45,7 @@ var MongoClient = require('mongodb').MongoClient;
 	client.on("connect", () => { console.log("Connected");});
 	client.subscribe("MangoProject", { qos:1 });
 
-	app.listen(httpPort, function () {
+	app.listen(PORT, function () {
 	  console.log(`Listening on port ${httpPort}!`)
-	})
-
-	server.listen(httpsPort, function () {
-	  console.log(`Listening on port ${httpsPort}!`)
 	})
 })();
