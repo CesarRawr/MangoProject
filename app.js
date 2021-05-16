@@ -54,7 +54,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 	client.on("error", (error) => {console.log(error);});
 	client.on("connect", () => { console.log("Connected");});
-	client.subscribe("getOutOfMyTopicBtch", { qos:1 });
+	client.subscribe("MangoProject", { qos:1 });
 
 	app.listen(httpPort, function () {
 	  console.log(`Listening on port ${httpPort}!`)

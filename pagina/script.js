@@ -1,5 +1,7 @@
 Push.Permission.get();
 
+window.jsPDF = window.jspdf.jsPDF;
+var humedad = document.querySelector('.hum-container > span.hum');
 var clientName = `Cliente#${ Math.floor(Math.random() * 99999999) + 1 }`;
 
 // Create a cliente instance
@@ -36,6 +38,7 @@ function onMessageArrived(message) {
         if(json.humedad >= 90) {
           sendNotification();
         }
+        humedad.textContent = json.humedad.toString();
     }
     catch(error) {
         console.log(error);
@@ -44,8 +47,8 @@ function onMessageArrived(message) {
 }
 
 function sendNotification() {
-    Push.create('Hi there!', {
-      body: 'This is a notification.',
+    Push.create('¡Oye!', {
+      body: 'Parece que tus manguitos están listos :)',
       icon: '/images/Mango.png',
       timeout: 8000,               // Timeout before notification closes automatically.
       vibrate: [100, 100, 100],    // An array of vibration pulses for mobile devices.
@@ -55,3 +58,14 @@ function sendNotification() {
       }  
   });
 }
+
+// Boton para jsPDF
+var boton = document.querySelector('.btn');
+boton.addEventListener('click', () => {
+  fetch('/obtenerHumedad')
+  .then((res) => res.json())
+  .then((json) => {
+    console.log(json);
+  })
+  .catch((e) => {console.log(e)});
+});

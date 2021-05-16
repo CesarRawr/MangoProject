@@ -43,3 +43,10 @@
   font-size: 24px;
   color: #fff;
 }
+
+@media (min-width: 400px) {
+  .hum-container {
+    width: 25vh;
+    height: 25vh;
+  }
+}
