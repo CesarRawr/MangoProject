@@ -69,7 +69,7 @@ boton.addEventListener('click', () => {
   .then((json) => {
     for (var i = 0; i < json.length; i++) {
      console.log(json[i]);
-     doc.text(20, 20, `${obj.nombre} humedad: ${obj.humedad} el ${obj.fecha}`);
+     doc.text(20, 20, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
     }
     doc.save('reporte.pdf');
   })
