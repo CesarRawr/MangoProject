@@ -1,8 +1,7 @@
-import { jsPDF } from "jspdf";
 
 Push.Permission.get();
 
-const doc = new jsPDF();
+var doc = new jsPDF();
 
 var humedad = document.querySelector('.hum-container > span.hum');
 var clientName = `Cliente#${ Math.floor(Math.random() * 99999999) + 1 }`;
