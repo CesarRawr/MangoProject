@@ -67,11 +67,17 @@ boton.addEventListener('click', () => {
   fetch('/obtenerHumedad')
   .then((res) => res.json())
   .then((json) => {
+    var y = 15;
     for (var i = 0; i < json.length; i++) {
       
-      var y = (i + 1) * 10;
+      
+      if (y+10 >= doc.internal.pageSize.height) {
+        y = 15;
+        doc.addPage();
+      }
 
-      doc.text(20, y, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
+      doc.text(10, y, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
+      y = y + 7;
     }
     doc.save('reporte.pdf');
   })
