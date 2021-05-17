@@ -32,13 +32,18 @@ var MongoClient = require('mongodb').MongoClient;
 		});
 	});
 
+	var ultimoDato = 0;
+
 	// Conexion mqtt
 	var client = mqtt.connect('mqtt://broker.emqx.io', { clientId: "Servidor1" });
 	client.on('message', (topic, message, packet) => {
-		collection.insertOne(JSON.parse(message), (err, r) => {
-			assert.equal(null, err);
-			console.log(r.insertedCount);
-		});
+		var humedad = JSON.parse(message).humedad;
+		if (ultimoDato !== humedad) {
+			ultimoDato = humedad;
+			collection.insertOne(JSON.parse(message), (err, r) => {
+				assert.equal(null, err);
+			});
+		}
 	});
 
 	client.on("error", (error) => {console.log(error);});
