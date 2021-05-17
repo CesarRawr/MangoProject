@@ -70,10 +70,6 @@ boton.addEventListener('click', () => {
     for (var i = 0; i < json.length; i++) {
       
       var y = (i + 1) * 10;
-      
-      if (y >= doc.internal.pageSize.height) {
-        doc.addPage();
-      }
 
       doc.text(20, y, `${json[i].nombre} humedad: ${json[i].humedad} el ${json[i].fecha}`);
     }
